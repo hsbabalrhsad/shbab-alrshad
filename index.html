@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title> شباب الرشاد</title>
+
+  <!-- خط كايرو -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-light: linear-gradient(135deg, #f9f9f7, #d8e2dc);
+      --text-light: #264653;
+      --accent-light: #2a9d8f;
+      --section-bg-light: #ffffff;
+      --shadow-light: rgba(42, 157, 143, 0.2);
+
+      --bg-dark: linear-gradient(135deg, #1b262c, #0f4c75);
+      --text-dark: #dbe9e4;
+      --accent-dark: #56c596;
+      --section-bg-dark: #153743;
+      --shadow-dark: rgba(86, 197, 150, 0.6);
+    }
+
+    body.light {
+      --bg: var(--bg-light);
+      --text: var(--text-light);
+      --accent: var(--accent-light);
+      --section-bg: var(--section-bg-light);
+      --shadow: var(--shadow-light);
+    }
+
+    body.dark {
+      --bg: var(--bg-dark);
+      --text: var(--text-dark);
+      --accent: var(--accent-dark);
+      --section-bg: var(--section-bg-dark);
+      --shadow: var(--shadow-dark);
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0; padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: background 0.8s ease, color 0.8s ease;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-tap-highlight-color: transparent;
+      user-select: text;
+    }
+    h1, h2 {
+      font-weight: 700;
+      margin: 0 0 0.3em 0;
+      letter-spacing: 0.08em;
+      animation: fadeSlideIn 1s ease forwards;
+      user-select: none;
+    }
+    p, li {
+      font-weight: 400;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      margin: 0.2em 0 1em 0;
+      animation: fadeSlideIn 1.3s ease forwards;
+    }
+    ul {
+      padding-inline-start: 1.5rem;
+      margin: 0;
+      animation: fadeSlideIn 1.5s ease forwards;
+    }
+    li {
+      margin-bottom: 0.8em;
+    }
+
+    @keyframes fadeSlideIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .container {
+      max-width: 900px;
+      padding: 2rem 1.5rem 4rem 1.5rem;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      box-sizing: border-box;
+    }
+
+    header {
+      text-align: center;
+      padding: 3rem 1rem 2rem 1rem;
+      color: var(--accent);
+      text-shadow: 0 0 10px var(--accent);
+    }
+    header h1 {
+      font-size: 3.6rem;
+      margin-bottom: 0.2rem;
+      animation-delay: 0.3s;
+    }
+    header p {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--text);
+      text-shadow: none;
+      animation-delay: 0.5s;
+    }
+    header .hadith {
+      font-weight: 600;
+      font-size: 1.15rem;
+      margin-top: -0.6em;
+      color: var(--text);
+      font-style: italic;
+      animation-delay: 0.7s;
+      user-select: text;
+      border-right: 3px solid var(--accent);
+      padding-right: 0.8em;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    nav {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 1rem;
+      padding: 0 1rem;
+      flex-wrap: wrap;
+      user-select: none;
+    }
+    nav a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.15rem;
+      padding: 8px 16px;
+      border-radius: 8px;
+      background: var(--section-bg);
+      box-shadow: 0 2px 8px var(--shadow);
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+    nav a:hover,
+    nav a:focus {
+      background: var(--accent);
+      color: var(--section-bg);
+      box-shadow: 0 4px 20px var(--accent);
+      outline: none;
+    }
+
+    section {
+      background: var(--section-bg);
+      border-radius: 15px;
+      box-shadow: 0 6px 20px var(--shadow);
+      padding: 2rem 2.5rem;
+      color: var(--text);
+      transition: box-shadow 0.4s ease, background 0.5s ease;
+      animation: fadeSlideIn 1.7s ease forwards;
+      position: relative;
+    }
+    section:hover {
+      box-shadow: 0 12px 40px var(--accent);
+    }
+    section h2 {
+      color: var(--accent);
+      margin-bottom: 1rem;
+      font-size: 2.4rem;
+      letter-spacing: 0.12em;
+      user-select: none;
+    }
+
+    ul li {
+      position: relative;
+      padding-right: 35px;
+      font-weight: 600;
+    }
+    ul li::before {
+      content: '•';
+      position: absolute;
+      right: 10px;
+      top: 0.3rem;
+      font-size: 1.8rem;
+      color: var(--accent);
+      text-shadow: 0 0 8px var(--accent);
+      animation: pulseAccent 2.5s infinite;
+      user-select: none;
+    }
+    @keyframes pulseAccent {
+      0%, 100% {
+        text-shadow: 0 0 8px var(--accent);
+      }
+      50% {
+        text-shadow: 0 0 15px var(--accent);
+      }
+    }
+
+    /* مربعات التواصل */
+    .contact-boxes {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .contact-box {
+      flex: 1 1 200px;
+      max-width: 280px;
+      background: var(--accent);
+      color: var(--section-bg);
+      border-radius: 15px;
+      padding: 1.4rem 2rem;
+      box-shadow: 0 6px 15px var(--shadow);
+      font-weight: 700;
+      font-size: 1.15rem;
+      text-align: center;
+      cursor: pointer;
+      user-select: text;
+      transition: background 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .contact-box:hover,
+    .contact-box:focus {
+      background: #21867a;
+      box-shadow: 0 10px 30px rgba(33, 134, 122, 0.7);
+      outline: none;
+    }
+    .contact-box span {
+      font-size: 1.4rem;
+      user-select: text;
+    }
+
+    #modeToggle {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: transparent;
+      border: 2.5px solid var(--accent);
+      color: var(--accent);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      transition: background 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+      user-select: none;
+    }
+    #modeToggle:hover,
+    #modeToggle:focus {
+      background: var(--accent);
+      color: var(--section-bg);
+      box-shadow: 0 0 15px var(--accent);
+      transform: scale(1.1);
+      outline: none;
+    }
+
+    #modeToggle svg {
+      width: 28px;
+      height: 28px;
+      fill: currentColor;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transform-origin: center;
+      transform-box: fill-box;
+      transition: transform 0.8s ease;
+    }
+    #modeToggle:hover svg .sun-rays {
+      animation: sunRotate 2s linear infinite;
+    }
+    .sun-center {
+      fill: currentColor;
+      stroke: currentColor;
+      stroke-width: 1.5;
+    }
+    .sun-rays {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+    }
+    @keyframes sunRotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* استجابة لجميع الأجهزة */
+    @media (max-width: 800px) {
+      header h1 {
+        font-size: 2.8rem;
+      }
+      header p, header .hadith {
+        font-size: 1rem;
+      }
+      nav {
+        gap: 15px;
+      }
+      section {
+        padding: 1.5rem 1.5rem;
+      }
+      .contact-boxes {
+        flex-direction: column;
+        gap: 15px;
+      }
+      .contact-box {
+        max-width: 100%;
+      }
+    }
+    @media (max-width: 400px) {
+      body {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <button id="modeToggle" title="تبديل الوضع" aria-label="تبديل الوضع بين داكن وفاتح">
+    <svg viewBox="0 0 24 24" aria-hidden="true" >
+      <circle class="sun-center" cx="12" cy="12" r="5" />
+      <g class="sun-rays">
+        <line x1="12" y1="1" x2="12" y2="3" />
+        <line x1="12" y1="21" x2="12" y2="23" />
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+        <line x1="1" y1="12" x2="3" y2="12" />
+        <line x1="21" y1="12" x2="23" y2="12" />
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+      </g>
+    </svg>
+  </button>
+
+  <header>
+    <h1>﴿ شَبَابُ الرَّشَادِ ﴾</h1>
+    <p>مشروع مجموعة من الشباب</p>
+    <p class="hadith" lang="ar" dir="rtl" aria-label="حديث نبوي شريف">
+      وَمَنْ سَلَكَ طَرِيقًا يَلْتَمِسُ فِيهِ عِلْمًا، سَهَّلَ اللَّهُ لَهُ طَرِيقًا إِلَى الجَنَّةِ رواه مسلم
+    </p>
+  </header>
+
+  <nav role="navigation" aria-label="قائمة التنقل الرئيسية">
+    <a href="#about">من نحن</a>
+    <a href="#idea">فكرتنا</a>
+    <a href="#mechanism">آلية المجلس</a>
+    <a href="#goal">غايتنا</a>
+    <a href="#contact">تواصل معنا</a>
+    <a href="#official" role="link" tabindex="0">الصفحات الرسمية</a>
+    <a href="#donate">التبرع</a>
+  </nav>
+
+  <div class="container">
+
+    <section id="about" aria-labelledby="aboutTitle">
+      <h2 id="aboutTitle">من نحن</h2>
+      <p>مجموعة من الشباب يسعون لنشر العلم النافع وتقوية الإيمان مع اكتساب مهارات العصر التقنية، يهدفون لبناء جيل قوي وواعٍ يجمع بين نور الوحي وقوة المهارة.</p>
+    </section>
+
+    <section id="idea" aria-labelledby="ideaTitle">
+      <h2 id="ideaTitle">فكرتنا</h2>
+      <ul>
+        <li>دروس شرعية تكون شخصا مثقفا في دينه.</li>
+        <li>إنشاء مجلس يضم مجموعة من الشباب الطموح.</li>
+        <li>بث العلم النافع في صور سهلة وشيقة.</li>
+        <li>التركيز على المواضيع الفقهية، العلمية، والمهارات الحياتية.</li>
+        <li>تنظيم لقاءات ومسابقات ودورات تطويرية.</li>
+        <li>جعل الطلاب يلقون محاضرات بأنفسهم.</li>
+      </ul>
+    </section>
+
+    <section id="mechanism" aria-labelledby="mechanismTitle">
+      <h2 id="mechanismTitle">آلية المجلس</h2>
+      <p>يتم إدارة المجلس عبر نظام متكامل وهو:</p>
+      <ul>
+        <li>مجالس اسبوعية محاضروها هم الطلاب.</li>
+        <li>نظام متقن يعزز ثقتة الطالب بنفسه .</li>
+        <li>ورش عمل دورية ومسابقات تحفيزية.</li>
+        <li>دروس إلقاء وخطابة.</li>
+        <li>رحلات وأنشطة.</li>
+      </ul>
+    </section>
+
+    <section id="goal" aria-labelledby="goalTitle">
+      <h2 id="goalTitle">غايتنا</h2>
+      <p>نسعى لبناء جيل  يجمع بين علوم الدنيا والآخرة، ليخدم دينه وأمته بعلم نافع وعمل متقن..</p>
+    </section>
+
+    <section id="contact" aria-labelledby="contactTitle">
+      <h2 id="contactTitle">تواصل معنا</h2>
+      <div class="contact-boxes">
+        <div class="contact-box" tabindex="0" role="button" onclick="window.open('https://wa.me/+46768868045','_blank','_blank')" title="تواصل عبر واتس آب">
+          <span>واتس آب: +46 76 886 80 45</span>
+        </div>
+        <div class="contact-box" tabindex="0" role="button" onclick="window.open('https://t.me/@abo_H_aydara','_blank')" title="تواصل عبر تليجرام">
+          <span>تليجرام: @abo_H_aydara</span>
+        </div>
+        <div class="contact-box" tabindex="0" role="button" onclick="location.href='hmdo49237@gmail.com'" title="البريد الإلكتروني">
+          <span>البريد: hmdo49237@gmail.com</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    const modeToggle = document.getElementById('modeToggle');
+    const body = document.body;
+
+    function loadMode() {
+      const saved = localStorage.getItem('mode');
+      if (saved === 'dark') {
+        body.classList.add('dark');
+        body.classList.remove('light');
+      } else {
+        body.classList.add('light');
+        body.classList.remove('dark');
+      }
+    }
+
+    function toggleMode() {
+      if (body.classList.contains('light')) {
+        body.classList.remove('light');
+        body.classList.add('dark');
+        localStorage.setItem('mode', 'dark');
+      } else {
+        body.classList.remove('dark');
+        body.classList.add('light');
+        localStorage.setItem('mode', 'light');
+      }
+    }
+
+    modeToggle.addEventListener('click', toggleMode);
+    loadMode();
+  </script>
+    <section id="official" aria-labelledby="officialTitle">
+      <h2 id="officialTitle">الصفحات الرسمية</h2>
+      <div class="contact-boxes">
+        <div class="contact-box" tabindex="0" role="button" onclick="window.open('https://chat.whatsapp.com/C8w0wx7VceAH9KKOGWdvAi?mode=ac_t','_blank')" title="الصفحة الرسمية على واتس آب">
+          <span>واتس آب الرسمي</span>
+        </div>
+        <div class="contact-box" tabindex="0" role="button" onclick="window.open('https://t.me/shbabalrahsad','_blank')" title="الصفحة الرسمية على تليجرام">
+          <span>تليجرام الرسمي</span>
+        </div>
+        <div class="contact-box" tabindex="0" role="button" onclick="window.open('https://www.youtube.com/@%D8%B4%D8%A8%D8%A7%D8%A8-%D8%A7%D9%84%D8%B1%D8%B4%D8%A7%D8%AF-%D8%A7%D9%84%D8%B1%D8%B3%D9%85%D9%8A%D8%A9')" title="الصفحة الرسمية على يوتيوب">
+          <span>يوتيوب الرسمي</span>
+        </div>
+      </div>
+    </section>
+  <section id="donate" aria-labelledby="donateTitle">
+      <h2 id="donateTitle">التبرع</h2>
+      <p>ندعوك لدعم مشروعنا والمساهمة في تحقيق أهدافنا. يمكنكم التبرع عبر:</p>
+      <ul>
+        <li>التواصل معنا</li>
+      </ul>
+      <p>جزاكم الله خيرًا على دعمكم!</p>
+    </section>
+  </div>
+</body>
+</html>
